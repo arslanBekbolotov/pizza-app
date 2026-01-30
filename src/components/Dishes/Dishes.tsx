@@ -29,17 +29,17 @@ const Dishes: React.FC<Props> = ({ dishes, title }) => {
 
   return (
     <section id="pizza" className="pizza">
-        <h2>{filter.searchValue || title}</h2>
-        <div className={"grid__container"}>
-          {dishes.map((dish) => (
-            <Dish
-              onClickAdd={() => onClickAdd(dish)}
-              key={dish.id}
-              dish={dish}
-              count={findCount(dish.id)}
-            />
-          ))}
-        </div>
+      <h2>{filter.searchValue || title}</h2>
+      <div className={"grid__container"}>
+        {dishes.map((dish) => (
+          <Dish
+            onClickAdd={() => onClickAdd(dish)}
+            key={dish.id}
+            dish={dish}
+            count={findCount(dish.id)}
+          />
+        ))}
+      </div>
     </section>
   );
 };

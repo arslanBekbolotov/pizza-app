@@ -6,10 +6,13 @@ import Home from "./containers/Home/Home";
 import NotFoundBlock from "./containers/NotFoundBlock/NotFoundBlock";
 import Categories from "./containers/Categories/Categories";
 import Cart from "./containers/Cart/Cart";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 function App() {
   return (
     <div className="App">
+      <ScrollToTop />
+
       <Routes>
         <Route path={"/"} element={<Layout />}>
           <Route path={""} element={<Home />} />

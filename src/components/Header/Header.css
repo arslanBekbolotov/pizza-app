@@ -8,7 +8,7 @@ header {
 
 header.compact {
   padding: 5px 0;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 .header {
@@ -18,12 +18,14 @@ header.compact {
   gap: 31px;
 }
 
-.header.compact{
+.header.compact {
   gap: 0;
 }
 
 .fade {
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
   opacity: 1;
   transform: translateY(0);
 }
@@ -176,7 +178,7 @@ header.compact {
     justify-content: space-between;
   }
 
-  .hamburger-menu.compact{
+  .hamburger-menu.compact {
     position: static;
     transform: none;
   }

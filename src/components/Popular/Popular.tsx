@@ -10,12 +10,12 @@ interface Props {
 const Popular: React.FC<Props> = ({ popularList }) => {
   return (
     <section className="new">
-        <h2>Новое и популярное</h2>
-        <div className="popular grid__container">
-          {popularList.map((item) => (
-            <PopularItem key={item.id} popular={item} />
-          ))}
-        </div>
+      <h2>Новое и популярное</h2>
+      <div className="popular grid__container">
+        {popularList.map((item) => (
+          <PopularItem key={item.id} popular={item} />
+        ))}
+      </div>
     </section>
   );
 };
