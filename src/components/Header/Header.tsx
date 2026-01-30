@@ -1,4 +1,4 @@
-import React, {useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import logo from "../../assets/header/logo.svg";
 import logoText from "../../assets/header/logo-text.svg";
 import "./Header.css";
@@ -9,24 +9,42 @@ import { useAppSelector } from "../../redux/hooks/hooks";
 const Header = () => {
   const { items, totalPrice } = useAppSelector((state) => state.cart);
   const [menuToggle,setMenuToggle] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const y = window.scrollY;
+
+      setIsExpanded(prev => {
+        if (prev && y > 190) return false;
+        if (!prev && y < 70) return true;
+        return prev;
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const productsCount = items.reduce((acc, value) => {
     return acc + value.count;
   }, 0);
 
   return (
-    <header>
-      <div className="container">
-        <div id="head" className="header">
+    <header className={!isExpanded ? "compact" : ""}>
+        <div id="head" className={`header container ${!isExpanded ? "compact" : ""}`}>
           <div className="header__elem">
             <Link to={"/"}>
               <div className="header__logo">
                 <img id="logo" src={logo} alt="logo" />
-                <img src={logoText} alt="logo-text" />
-                <p className="logo__text">Сеть пиццерий №1 в России</p>
+                <img className={`fade ${isExpanded ? "" : "hide"}`} src={logoText} alt="logo-text"/>
+                <p className={`logo__text fade ${isExpanded ? "" : "hide"}`}>Сеть пиццерий №1 в России</p>
               </div>
             </Link>
             <div className="header__item">
-              <Search />
+              <div className={`fade ${isExpanded ? "" : "hide"}`}>
+                <Search/>
+              </div>
               <div className="header__cart">
                 <Link to={"/cart"} className="button--cart">
                   <span>{totalPrice} ₽</span>
@@ -66,7 +84,7 @@ const Header = () => {
             </div>
           </div>
           <div id="header_sticky" className="header__elem">
-            <div className="hamburger-menu">
+            <div className={`hamburger-menu ${!isExpanded ? "compact" : ""}`}>
               <input id="menu__toggle" type="checkbox" checked={menuToggle} onClick={()=>setMenuToggle(prevState => !prevState)}/>
               <label className="menu__btn" htmlFor="menu__toggle">
                 <span></span>
@@ -94,7 +112,6 @@ const Header = () => {
             </div>
           </div>
         </div>
-      </div>
     </header>
   );
 };

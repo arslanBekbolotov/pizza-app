@@ -2,10 +2,6 @@ footer {
   background-color: #464c55;
 }
 
-.container {
-  padding: 0 2%;
-}
-
 .footer__list_primary li ul li {
   margin-bottom: 18px;
   max-width: 160px;

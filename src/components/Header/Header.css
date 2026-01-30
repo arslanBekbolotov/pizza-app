@@ -1,12 +1,37 @@
 header {
   padding: 25px 0 30px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #fff;
+}
+
+header.compact {
+  padding: 5px 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
 }
 
 .header {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 31px;
-  width: 1060px;
+}
+
+.header.compact{
+  gap: 0;
+}
+
+.fade {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade.hide {
+  opacity: 0;
+  transform: translateY(-5px);
+  pointer-events: none;
 }
 
 .header__menu {
@@ -24,10 +49,6 @@ header {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-}
-
-.header__logo {
-  margin: 20px 0 20px;
 }
 
 #logo {
@@ -71,15 +92,12 @@ header {
   background-color: #fff;
 }
 
-.sticky {
-  position: fixed;
-  top: 0;
-  width: inherit;
-  padding: 10px 0;
-}
-
-.header_sticky_logo {
-  display: none;
+.hamburger-menu.compact {
+  position: absolute;
+  top: 50%;
+  left: 100px;
+  transform: translateY(-50%);
+  transition: all 0.6s ease-out;
 }
 
 #menu__toggle {
@@ -158,6 +176,11 @@ header {
     justify-content: space-between;
   }
 
+  .hamburger-menu.compact{
+    position: static;
+    transform: none;
+  }
+
   .menu__item {
     padding: 0 20px 0 0;
   }
@@ -166,6 +189,7 @@ header {
 @media (max-width: 576px) {
   header {
     padding: 0;
+    position: static;
   }
 
   .header {
@@ -186,6 +210,8 @@ header {
   .header__item {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
   }
 
   .phone {
