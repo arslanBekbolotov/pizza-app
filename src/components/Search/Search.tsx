@@ -1,4 +1,4 @@
-import React, {useRef, useState} from "react";
+import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setFilterName } from "../../redux/slices/filterSlice";
 import { debounce } from "lodash";
@@ -9,9 +9,9 @@ const Search = () => {
   const dispatch = useDispatch();
 
   const updateSearchValue = useRef(
-      debounce((str: string) => {
-        dispatch(setFilterName(str));
-      }, 400)
+    debounce((str: string) => {
+      dispatch(setFilterName(str));
+    }, 400),
   ).current;
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {

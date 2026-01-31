@@ -65,7 +65,9 @@
   cursor: pointer;
   padding: 8px 12px;
   border-radius: 8px;
-  transition: background 0.2s, color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s;
 }
 
 .cart-page__clear:hover {
@@ -112,7 +114,9 @@
   padding: 12px;
   cursor: pointer;
   border: 1px solid rgba(0, 0, 0, 0.06);
-  transition: box-shadow 0.2s, transform 0.2s;
+  transition:
+    box-shadow 0.2s,
+    transform 0.2s;
   text-align: center;
 }
 
@@ -165,7 +169,7 @@
 }
 
 .cart-page__free {
-  color: #4CAF50;
+  color: #4caf50;
 }
 
 .cart-page__total {
@@ -204,7 +208,9 @@
   color: #73798c;
   font: 500 16px/22px var(--font-text);
   cursor: pointer;
-  transition: background 0.2s, border-color 0.2s;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
 }
 
 .cart-page__back-btn:hover {
