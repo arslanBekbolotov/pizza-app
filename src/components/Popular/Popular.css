@@ -2,43 +2,62 @@
   padding: 15px 0;
 }
 
+.new h2 {
+  margin-bottom: 20px;
+}
+
 .popular {
   display: flex;
-  justify-content: space-between;
-  margin-top: 30px;
-  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 0;
+  gap: 16px;
 }
 
 .popular__item {
-  width: 250px;
-  height: 104px;
-  box-shadow: 0 6px 25px rgba(6, 5, 50, 0.05);
-  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 320px;
+  min-height: 120px;
+  padding: 16px 20px;
+  box-shadow: 0 4px 20px rgba(6, 5, 50, 0.06);
+  border-radius: 16px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: box-shadow 0.25s ease, transform 0.2s ease;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 .popular__item:hover {
-  box-shadow: 0 0 15px rgba(6, 5, 50, 0.25);
-  transition: 0.3s;
+  box-shadow: 0 8px 28px rgba(6, 5, 50, 0.12);
+  transform: translateY(-2px);
 }
 
 .popular__item > img {
-  max-width: 80px;
-  float: left;
-  margin: 14px 22px 14px 18px;
+  width: 100px;
+  height: 100px;
+  min-width: 100px;
+  min-height: 100px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.popular__item > div {
+  flex: 1;
+  min-width: 0;
 }
 
 .popular__pizza {
-  font: 400 14px/19px var(--font-text);
+  font: 600 16px/22px var(--font-text);
   color: #000;
-  margin: 29px 0 4px;
+  margin: 0 0 6px;
 }
 
 .popular__price,
-.price {
-  font: 600 16px/22px var(--font-text);
-  color: #000;
+.popular .price {
+  font: 600 18px/24px var(--font-text);
+  color: var(--main-color);
 }
 
 /* adaptive */
@@ -48,13 +67,9 @@
     padding: 30px 0;
   }
 
-  .popular {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
   .popular__item {
-    min-width: 40%;
+    width: calc(50% - 8px);
+    min-width: 280px;
   }
 }
 
@@ -64,22 +79,26 @@
   }
 
   .popular__item {
-    min-width: 45%;
+    width: 100%;
+    min-width: 0;
   }
 }
 
 @media (max-width: 425px) {
   .new {
-    padding: 0;
+    padding: 20px 0;
   }
 
   .popular__item {
-    min-width: 60%;
+    width: 100%;
+    padding: 14px 16px;
+    min-height: 100px;
   }
-}
 
-@media (max-width: 375px) {
-  .popular__item {
-    min-width: 70%;
+  .popular__item > img {
+    width: 80px;
+    height: 80px;
+    min-width: 80px;
+    min-height: 80px;
   }
 }
