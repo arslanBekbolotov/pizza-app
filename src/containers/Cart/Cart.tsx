@@ -63,7 +63,7 @@ const Cart = () => {
       updateCartItem({
         oldKey: editingItem.cartItemKey,
         newItem: payload,
-      })
+      }),
     );
     setEditingItem(null);
   };
@@ -83,7 +83,7 @@ const Cart = () => {
   };
 
   const filteredSuggestions = suggestions.filter(
-    (s) => !items.some((i) => i.id === s.id)
+    (s) => !items.some((i) => i.id === s.id),
   );
 
   if (items.length === 0 && !orderPlaced) {
@@ -135,7 +135,8 @@ const Cart = () => {
       <div className="cart-page">
         <div className="cart-page__header">
           <h1 className="cart-page__title">
-            {totalCount} {totalCount === 1 ? "товар" : "товара"} на {totalPrice} ₽
+            {totalCount} {totalCount === 1 ? "товар" : "товара"} на {totalPrice}{" "}
+            ₽
           </h1>
           <button
             type="button"

@@ -10,7 +10,11 @@ interface Props {
   onClickEdit: () => void;
 }
 
-const CartItem: React.FC<Props> = ({ cartItem, onClickRemove, onClickEdit }) => {
+const CartItem: React.FC<Props> = ({
+  cartItem,
+  onClickRemove,
+  onClickEdit,
+}) => {
   const dispatch = useAppDispatch();
 
   const onPlus = () => {
@@ -59,11 +63,7 @@ const CartItem: React.FC<Props> = ({ cartItem, onClickRemove, onClickEdit }) => 
         <p className="cart-item__price">
           {cartItem.totalUnitPrice * cartItem.count} ₽
         </p>
-        <button
-          type="button"
-          className="cart-item__edit"
-          onClick={onClickEdit}
-        >
+        <button type="button" className="cart-item__edit" onClick={onClickEdit}>
           Изменить
         </button>
         <div className="cart-item__qty">

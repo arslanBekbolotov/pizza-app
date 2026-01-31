@@ -31,7 +31,7 @@ function getCartItemKey(item: {
 function getTotalUnitPrice(
   dish: IGoods,
   selectedSize?: ISizeOption,
-  addedIngredients?: IAddOnIngredient[]
+  addedIngredients?: IAddOnIngredient[],
 ): number {
   const base = dish.price;
   const sizeMod = selectedSize?.priceModifier ?? 0;
@@ -53,7 +53,10 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addProducts(state, action: PayloadAction<AddToCartPayload | IGoodsMutation>) {
+    addProducts(
+      state,
+      action: PayloadAction<AddToCartPayload | IGoodsMutation>,
+    ) {
       const payload = action.payload;
       const key =
         "cartItemKey" in payload && payload.cartItemKey
@@ -65,12 +68,13 @@ const cartSlice = createSlice({
         findItem.count++;
       } else {
         const totalUnitPrice =
-          "totalUnitPrice" in payload && typeof payload.totalUnitPrice === "number"
+          "totalUnitPrice" in payload &&
+          typeof payload.totalUnitPrice === "number"
             ? payload.totalUnitPrice
             : getTotalUnitPrice(
                 payload,
                 payload.selectedSize,
-                payload.addedIngredients
+                payload.addedIngredients,
               );
         state.items.push({
           ...payload,
@@ -82,13 +86,13 @@ const cartSlice = createSlice({
 
       state.totalPrice = state.items.reduce(
         (acc, value) => acc + value.totalUnitPrice * value.count,
-        0
+        0,
       );
     },
     minusProducts(state, action: PayloadAction<string>) {
       const cartItemKey = action.payload;
       const findItem = state.items.find(
-        (item) => item.cartItemKey === cartItemKey
+        (item) => item.cartItemKey === cartItemKey,
       );
 
       if (findItem && findItem.count > 0) {
@@ -97,17 +101,17 @@ const cartSlice = createSlice({
 
       state.totalPrice = state.items.reduce(
         (acc, value) => acc + value.totalUnitPrice * value.count,
-        0
+        0,
       );
     },
     removeProducts(state, action: PayloadAction<string>) {
       const cartItemKey = action.payload;
       state.items = state.items.filter(
-        (product) => product.cartItemKey !== cartItemKey
+        (product) => product.cartItemKey !== cartItemKey,
       );
       state.totalPrice = state.items.reduce(
         (acc, value) => acc + value.totalUnitPrice * value.count,
-        0
+        0,
       );
     },
     clearProducts(state) {
@@ -116,7 +120,7 @@ const cartSlice = createSlice({
     },
     updateCartItem(
       state,
-      action: PayloadAction<{ oldKey: string; newItem: AddToCartPayload }>
+      action: PayloadAction<{ oldKey: string; newItem: AddToCartPayload }>,
     ) {
       const { oldKey, newItem } = action.payload;
       const idx = state.items.findIndex((item) => item.cartItemKey === oldKey);
@@ -127,11 +131,11 @@ const cartSlice = createSlice({
       const totalUnitPrice = getTotalUnitPrice(
         newItem,
         newItem.selectedSize,
-        newItem.addedIngredients
+        newItem.addedIngredients,
       );
 
       const existingIdx = state.items.findIndex(
-        (item, i) => i !== idx && item.cartItemKey === newKey
+        (item, i) => i !== idx && item.cartItemKey === newKey,
       );
 
       if (existingIdx !== -1) {
@@ -148,7 +152,7 @@ const cartSlice = createSlice({
 
       state.totalPrice = state.items.reduce(
         (acc, value) => acc + value.totalUnitPrice * value.count,
-        0
+        0,
       );
     },
   },
