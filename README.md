@@ -1,46 +1,97 @@
-# Getting Started with Create React App
+# 🍕 Pizza App — React + TypeScript
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Описание
 
-## Available Scripts
+Этот проект представляет собой веб-приложение для заказа пиццы по типу сервиса «Додо Пицца».
+Пользователь может искать пиццы, настраивать их состав (размер, тесто, ингредиенты) и оформлять заказ через корзину.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+![Главная страница](./public/screenshots/home.png)
+![Выбор ингредиентов](./public/screenshots/modal.png)
+![Корзина](./public/screenshots/cart.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 🛠 Технологии
 
-### `npm test`
+* React
+* React Hooks
+* TypeScript
+* Redux Toolkit
+* React Router DOM
+* CSS
+* Axios
+* Mockapi
+* ESLint
+* Prettier
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🔧 Установка
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Клонируйте репозиторий:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+git clone https://github.com/arslanBekbolotov/pizza-app.git
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Перейдите в директорию проекта:
 
-### `npm run eject`
+```bash
+cd pizza-app
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Установите зависимости:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+---
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## ▶ Использование
 
-## Learn More
+Запустите проект в режиме разработки:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Откройте браузер и перейдите по адресу:
+
+```text
+http://localhost:3000
+```
+
+---
+
+## ✨ Функции
+
+* Поиск пицц по названию.
+* Просмотр списка товаров по категориям (пиццы, комбо и др.).
+* Выбор размера и типа теста пиццы.
+* Выбор дополнительных ингредиентов.
+* Модальное окно с подробной информацией о товаре.
+* Добавление товаров в корзину.
+* Изменение состава товара уже в корзине.
+* Увеличение и уменьшение количества позиций.
+* Удаление товаров из корзины.
+* Полная очистка корзины.
+* Блок рекомендаций (добавки к заказу: напитки, дополнительные продукты).
+* Индикация загрузки данных (skeleton loaders).
+* Обработка ошибок загрузки.
+
+---
+
+## Код веб-приложения написан с использованием
+
+
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Redux Toolkit](https://img.shields.io/badge/Redux_Toolkit-764ABC?style=for-the-badge&logo=redux)
+![Axios](https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios)
+![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint)
+![Prettier](https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=black)
+![WebStorm](https://img.shields.io/badge/WebStorm-000000?style=for-the-badge&logo=webstorm)
+
