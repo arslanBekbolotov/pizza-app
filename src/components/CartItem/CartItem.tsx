@@ -6,42 +6,81 @@ import { useAppDispatch } from "../../redux/hooks/hooks";
 
 interface Props {
   cartItem: IGoodsMutation;
-  onClickRemove: React.MouseEventHandler;
+  onClickRemove: () => void;
+  onClickEdit: () => void;
 }
-const CartItem: React.FC<Props> = ({ cartItem, onClickRemove }) => {
+
+const CartItem: React.FC<Props> = ({ cartItem, onClickRemove, onClickEdit }) => {
   const dispatch = useAppDispatch();
 
-  const oncClickPlus = () => {
+  const onPlus = () => {
     dispatch(addProducts(cartItem));
   };
 
-  const onClickMinus = () => {
-    dispatch(minusProducts(cartItem.id));
+  const onMinus = () => {
+    dispatch(minusProducts(cartItem.cartItemKey));
   };
 
+  const optionParts: string[] = [];
+  if (cartItem.selectedSize) optionParts.push(cartItem.selectedSize.label);
+  if (cartItem.selectedDough) optionParts.push(cartItem.selectedDough.label);
+  const optionLine = optionParts.length > 0 ? optionParts.join(", ") : null;
+
+  const hasAddedIngredients =
+    cartItem.addedIngredients && cartItem.addedIngredients.length > 0;
+
   return (
-    <div className="cart__element">
-      <img src={cartItem.imageUrl} alt={cartItem.title} />
-      <div className="cart__element_info">
-        <p className="cart__element_title">{cartItem.title}</p>
-        <p>Тонкое тесто 30см</p>
-      </div>
-      <div className="cart__element_block">
-        <button className="btn--cart btn__minus" onClick={onClickMinus}>
-          -
+    <div className="cart-item">
+      <div className="cart-item__main">
+        <img
+          className="cart-item__img"
+          src={cartItem.imageUrl}
+          alt={cartItem.title}
+        />
+        <div className="cart-item__info">
+          <p className="cart-item__title">{cartItem.title}</p>
+          {optionLine && <p className="cart-item__options">{optionLine}</p>}
+          {hasAddedIngredients && (
+            <p className="cart-item__extras">
+              + {cartItem.addedIngredients!.map((i) => i.title).join(", ")}
+            </p>
+          )}
+        </div>
+        <button
+          type="button"
+          className="cart-item__remove"
+          onClick={onClickRemove}
+          aria-label="Удалить"
+        >
+          ×
         </button>
-        <p className="cart__element_count">{cartItem.count}</p>
-        <button className="btn--cart btn__plus" onClick={oncClickPlus}>
-          +
-        </button>
       </div>
-      <p className="cart__element_price">{cartItem.price} &#8381;</p>
-      <button
-        className="btn--cart cart__element_closeBtn"
-        onClick={onClickRemove}
-      >
-        X
-      </button>
+      <div className="cart-item__footer">
+        <p className="cart-item__price">
+          {cartItem.totalUnitPrice * cartItem.count} ₽
+        </p>
+        <button
+          type="button"
+          className="cart-item__edit"
+          onClick={onClickEdit}
+        >
+          Изменить
+        </button>
+        <div className="cart-item__qty">
+          <button
+            type="button"
+            className="cart-item__qty-btn"
+            onClick={onMinus}
+            disabled={cartItem.count <= 1}
+          >
+            −
+          </button>
+          <span className="cart-item__qty-num">{cartItem.count}</span>
+          <button type="button" className="cart-item__qty-btn" onClick={onPlus}>
+            +
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
