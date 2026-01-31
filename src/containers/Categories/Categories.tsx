@@ -13,18 +13,14 @@ const Categories = () => {
   const searchValue = useAppSelector((state) => state.filter.searchValue);
 
   const fetchData = useCallback(
-    async (category: string, searchValue: string) => {
+    async (category: string, _searchValue: string) => {
       try {
         setLoading(true);
         const response = await axiosApi<IGoods[]>(`items?category=${category}`);
-        const dishes = response.data;
-
-        if (!dishes) {
-          setDishes([]);
-          return;
-        }
-
-        setDishes(dishes);
+        const data = response.data;
+        setDishes(Array.isArray(data) ? data : []);
+      } catch {
+        setDishes([]);
       } finally {
         setLoading(false);
       }

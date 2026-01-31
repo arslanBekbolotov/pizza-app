@@ -1,6 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IGoods, IGoodsMutation } from "../../types";
-import { json } from "react-router-dom";
+import {createSlice} from "@reduxjs/toolkit";
+import {IGoodsMutation} from "../../types";
 
 export interface dishesState {
   totalPrice: number;

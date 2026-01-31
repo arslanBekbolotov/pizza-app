@@ -1,14 +1,15 @@
 body {
   margin: 0;
-  font-family: "Roboto", BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu",
-    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family:
+    "Roboto", BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family:
+    source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 .grid__container {
@@ -26,7 +27,6 @@ code {
 .grid__elem {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 .grid__elem img {
@@ -38,16 +38,25 @@ code {
   transform: translateY(0.1875em);
 }
 
-.grid__elem h3 {
+.grid__elem_info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.grid__elem_info h3 {
   margin: 5px 0 10px;
   font: 500 20px/27px var(--font-text);
   color: var(--font-text);
+  flex-shrink: 0;
 }
 
-.grid__elem > p {
+.grid__elem_info > p {
+  flex: 1;
   font: 400 14px/19px var(--font-text);
   color: #73798c;
-  margin-bottom: 30px;
+  margin: 0 0 20px;
 }
 
 .grid__elem_bottom {
@@ -55,6 +64,36 @@ code {
   justify-content: space-between;
   align-items: center;
   margin-right: 20px;
+}
+
+/* пустой результат поиска */
+.dishes-empty {
+  text-align: center;
+  padding: 60px 20px 80px;
+}
+
+.dishes-empty__icon {
+  color: #d1d1d1;
+  margin-bottom: 24px;
+}
+
+.dishes-empty__icon svg {
+  display: inline-block;
+}
+
+.dishes-empty__title {
+  font: 600 24px/32px var(--font-text);
+  color: #000;
+  margin: 0 0 12px;
+}
+
+.dishes-empty__text {
+  font: 400 16px/22px var(--font-text);
+  color: #73798c;
+  margin: 0;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* adaptive */

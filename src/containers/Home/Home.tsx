@@ -21,14 +21,10 @@ const Home = () => {
     try {
       setLoading(true);
       const response = await axiosApi<IGoods[]>(`items?${search}`);
-      const dishes = response.data;
-
-      if (!dishes) {
-        setDishes([]);
-        return;
-      }
-
-      setDishes(dishes);
+      const data = response.data;
+      setDishes(Array.isArray(data) ? data : []);
+    } catch {
+      setDishes([]);
     } finally {
       setLoading(false);
     }
@@ -38,14 +34,10 @@ const Home = () => {
     try {
       setLoading(true);
       const response = await axiosApi<IPopular[]>(`elements`);
-      const dishes = response.data;
-
-      if (!dishes) {
-        setPopularDishes([]);
-        return;
-      }
-
-      setPopularDishes(dishes);
+      const data = response.data;
+      setPopularDishes(Array.isArray(data) ? data : []);
+    } catch {
+      setPopularDishes([]);
     } finally {
       setLoading(false);
     }

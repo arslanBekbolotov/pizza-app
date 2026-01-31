@@ -1,19 +1,18 @@
-import React, {useCallback, useRef, useState} from "react";
-import {useDispatch} from "react-redux";
-import {setFilterName} from "../../redux/slices/filterSlice";
-import {debounce} from "lodash";
+import React, {useRef, useState} from "react";
+import { useDispatch } from "react-redux";
+import { setFilterName } from "../../redux/slices/filterSlice";
+import { debounce } from "lodash";
 
 const Search = () => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [value, setValue] = useState("");
   const dispatch = useDispatch();
 
-  const updateSearchValue = useCallback(
-    debounce((str: string) => {
-      dispatch(setFilterName(str));
-    }, 400),
-    [dispatch, debounce],
-  );
+  const updateSearchValue = useRef(
+      debounce((str: string) => {
+        dispatch(setFilterName(str));
+      }, 400)
+  ).current;
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);

@@ -8,7 +8,7 @@
     "@types/node": "^16.18.38",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
-    "axios": "^1.4.0",
+    "axios": "1.12.0",
     "prettier": "^3.0.0",
     "react": "^18.2.0",
     "react-content-loader": "^6.2.1",
@@ -24,6 +24,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "engines": {
+    "node": "24.x"
   },
   "eslintConfig": {
     "extends": [
