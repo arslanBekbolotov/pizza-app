@@ -92,7 +92,7 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <div id="header_sticky" className="header__elem">
+        <div id="header_nav" className="header__elem">
           <div className={`hamburger-menu ${!isExpanded ? "compact" : ""}`}>
             <input
               id="menu__toggle"
